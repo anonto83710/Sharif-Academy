@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রেজিস্ট্রেশন | শরীফ একাডেমী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="auth-page">
+        <!-- Left Side -->
+        <div class="auth-left">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-3"></div>
+            <div class="auth-left-content text-center">
+                <h1>শরীফ একাডেমীতে স্বাগতম!</h1>
+                <p>তোমার ভবিষ্যৎ গড়ার প্রথম ধাপ</p>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="auth-right">
+            <div class="auth-form-container" style="max-width: 600px;">
+                <div class="text-center" style="margin-bottom: 10px;">
+                    <a href="index.html" style="font-weight: 600;">← ফিরে যান</a>
+                </div>
+                <h2>নিবন্ধন করুন</h2>
+                
+                <form id="registerForm">
+                    <!-- Aim Selector -->
+                    <div class="aim-selector">
+                        <label class="aim-tab active">
+                            <input type="radio" name="aim" value="SSC" checked> SSC
+                        </label>
+                        <label class="aim-tab">
+                            <input type="radio" name="aim" value="HSC"> HSC
+                        </label>
+                        <label class="aim-tab">
+                            <input type="radio" name="aim" value="JOB"> JOB
+                        </label>
+                    </div>
+
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label class="form-label">পুরো নাম</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="তোমার নাম" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">মোবাইল নম্বর</label>
+                            <input type="text" id="mobile" name="mobile" class="form-control" placeholder="01XXXXXXXXX" required>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" id="instLabel">স্কুলের নাম</label>
+                        <input type="text" id="institution" name="institution" class="form-control" placeholder="প্রতিষ্ঠানের নাম" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ঠিকানা</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="বর্তমান ঠিকানা" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">অভিভাবকের মোবাইল নম্বর</label>
+                        <input type="text" id="guardian_number" name="guardian_number" class="form-control" placeholder="01XXXXXXXXX" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">লিঙ্গ</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="gender" value="Male" checked> ছেলে</label>
+                            <label class="radio-label"><input type="radio" name="gender" value="Female"> মেয়ে</label>
+                            <label class="radio-label"><input type="radio" name="gender" value="Other"> অন্যান্য</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ছবি আপলোড করুন</label>
+                        <div class="photo-upload-area" id="photoArea">
+                            <span id="photoText">ক্লিক করে ছবি নির্বাচন করুন (JPG/PNG)</span>
+                            <img id="photoPreview" class="photo-preview" src="" alt="Preview">
+                            <input type="file" id="photo" name="photo" class="photo-upload-input" accept=".jpg,.jpeg,.png,.webp" required>
+                        </div>
+                        <span class="error-message" id="photoError"></span>
+                    </div>
+
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label class="form-label">পাসওয়ার্ড তৈরি করুন</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="reg_password" name="password" class="form-control" required>
+                                <span class="password-toggle" onclick="togglePassword('reg_password')">👁️</span>
+                            </div>
+                            <div class="strength-meter"><div class="strength-bar" id="strengthBar"></div></div>
+                            <span class="strength-text" id="strengthText"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">পাসওয়ার্ড নিশ্চিত করুন</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="confirm_password" class="form-control" required>
+                                <span class="password-toggle" onclick="togglePassword('confirm_password')">👁️</span>
+                            </div>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">নিবন্ধন সম্পন্ন করুন</button>
+                </form>
+                
+                <div class="text-center" style="margin-top: 20px;">
+                    <p>ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="login.html" style="font-weight: 600;">লগইন করুন</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast-container" id="toastContainer"></div>
+    <div class="loader-overlay" id="loader"><div class="loader"></div></div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

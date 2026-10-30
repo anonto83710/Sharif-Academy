@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ্যাডমিন লগইন | শরীফ একাডেমী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body { background: var(--primary-color); display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .admin-login-card { width: 100%; max-width: 400px; padding: 40px; }
+        h2 { text-align: center; margin-bottom: 30px; color: var(--primary-color); }
+    </style>
+</head>
+<body>
+    <div class="card admin-login-card">
+        <h2>অ্যাডমিন লগইন</h2>
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label class="form-label">ইউজারনেম</label>
+                <input type="text" id="username" class="form-control" placeholder="admin" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">পাসওয়ার্ড</label>
+                <input type="password" id="password" class="form-control" placeholder="admin123" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">লগইন</button>
+        </form>
+    </div>
+    
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <script src="../js/admin.js"></script>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const res = await api('/api/admin/login', {
+                    method: 'POST',
+                    body: { username, password }
+                });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    showToast(data.error || 'ভুল ইউজারনেম বা পাসওয়ার্ড');
+                }
+            } catch (err) {
+                showToast('সার্ভার এরর!');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ড্যাশবোর্ড | শরীফ একাডেমী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modern.css?v=2">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div style="width: 100%;">
+            <!-- Top Navbar -->
+            <nav class="dashboard-nav">
+                <div class="logo" style="color: var(--primary-color);">শরীফ একাডেমী</div>
+                <div class="user-profile-nav">
+                    <div style="text-align: right;">
+                        <strong id="navUserName">Loading...</strong><br>
+                        <small id="navUserAim">Student</small>
+                    </div>
+                    <img src="https://via.placeholder.com/150" alt="Profile" class="avatar-sm" id="navAvatar">
+                    <button class="btn btn-outline" style="padding: 5px 15px; margin-left: 10px;" id="logoutBtn">Logout</button>
+                </div>
+            </nav>
+
+            <div class="container dashboard-main">
+                <!-- Welcome Card -->
+                <div class="welcome-card card">
+                    <img src="https://via.placeholder.com/150" alt="Student" class="avatar-lg" id="mainAvatar">
+                    <div>
+                        <h2 id="welcomeMsg">স্বাগতম!</h2>
+                        <p style="margin: 5px 0 0 0;">তোমার প্রস্তুতি দারুণভাবে এগিয়ে চলুক।</p>
+                        <span class="badge" id="aimBadge" style="margin-top: 10px;">SSC</span>
+                    </div>
+                </div>
+
+                <div class="grid" style="grid-template-columns: 2fr 1fr;">
+                    <!-- Left Column -->
+                    <div>
+                        <!-- Course Info (Dynamic based on AIM) -->
+                        <div class="card" id="courseInfoCard">
+                            <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">কোর্স ইনফো</h3>
+                            <div id="courseContent" style="margin-top: 15px;">
+                                <!-- Populated via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <!-- Profile Details -->
+                        <div class="card" style="margin-bottom: 30px;">
+                            <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">প্রোফাইল</h3>
+                            <div style="margin-top: 15px;">
+                                <p><strong>নাম:</strong> <span id="p_name"></span></p>
+                                <p><strong>মোবাইল:</strong> <span id="p_mobile"></span></p>
+                                <p><strong>প্রতিষ্ঠান:</strong> <span id="p_inst"></span></p>
+                                <p><strong>ঠিকানা:</strong> <span id="p_address"></span></p>
+                                <p><strong>অভিভাবক:</strong> <span id="p_guardian"></span></p>
+                            </div>
+                            <button class="btn btn-outline btn-block" style="margin-top: 20px;">প্রোফাইল আপডেট</button>
+                        </div>
+
+                        <!-- Announcements -->
+                        <div class="card">
+                            <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">ঘোষণা (Announcements)</h3>
+                            <ul style="margin-top: 15px; padding-left: 20px; list-style-type: disc;">
+                                <li style="margin-bottom: 10px;">আগামীকাল সকাল ১০ টায় স্পেশাল মডেল টেস্ট অনুষ্ঠিত হবে।</li>
+                                <li style="margin-bottom: 10px;">নতুন ব্যাচের ক্লাস রুটিন আপডেট করা হয়েছে।</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const res = await api('/api/profile');
+                if (res.status === 401) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    const student = data.student;
+                    const userName = student.name;
+                    const userAim = student.aim;
+                    
+                    document.getElementById('navUserName').textContent = userName;
+                    document.getElementById('navUserAim').textContent = userAim;
+                    document.getElementById('welcomeMsg').textContent = `স্বাগতম, ${userName}! 🎉`;
+                    document.getElementById('aimBadge').textContent = userAim;
+
+                    document.getElementById('p_name').textContent = userName;
+                    document.getElementById('p_mobile').textContent = student.mobile;
+                    document.getElementById('p_inst').textContent = student.institution;
+                    document.getElementById('p_address').textContent = student.address;
+                    document.getElementById('p_guardian').textContent = student.guardian_number;
+
+                    const photoUrl = '/' + student.photo_path.replace(/\\/g, '/');
+                    document.getElementById('navAvatar').src = photoUrl;
+                    document.getElementById('mainAvatar').src = photoUrl;
+
+                    const courseContent = document.getElementById('courseContent');
+                    if (userAim === 'SSC') {
+                        courseContent.innerHTML = `
+                            <p style="margin-bottom: 15px; color: var(--text-muted);">আপনার গ্রুপ বা বিষয় নির্বাচন করুন:</p>
+                            <div class="job-courses-grid">
+                                <a href="ssc/science.html" class="job-course-btn">
+                                    <span class="icon">🔬</span>
+                                    <span class="title">বিজ্ঞান (Science)</span>
+                                </a>
+                                <a href="ssc/commerce.html" class="job-course-btn">
+                                    <span class="icon">💼</span>
+                                    <span class="title">ব্যবসায় শিক্ষা (Commerce)</span>
+                                </a>
+                                <a href="ssc/arts.html" class="job-course-btn">
+                                    <span class="icon">🌍</span>
+                                    <span class="title">মানবিক (Arts)</span>
+                                </a>
+                                <a href="ssc/common.html" class="job-course-btn">
+                                    <span class="icon">📚</span>
+                                    <span class="title">ঐচ্ছিক বিষয়</span>
+                                </a>
+                            </div>
+                        `;
+                    } else if (userAim === 'HSC') {
+                        courseContent.innerHTML = `
+                            <p><strong>ক্লাস:</strong> রবি, মঙ্গল, বৃহঃ (সকাল ১০ টা)</p>
+                            <p><strong>বিষয়:</strong> উচ্চতর গণিত, পদার্থ, রসায়ন, জীববিজ্ঞান</p>
+                            <button class="btn btn-primary" style="margin-top: 10px;">রুটিন ডাউনলোড</button>
+                        `;
+                    } else {
+                        // JOB Courses with professional links
+                        courseContent.innerHTML = `
+                            <p style="margin-bottom: 15px; color: var(--text-muted);">আপনার কাঙ্ক্ষিত চাকরির প্রস্তুতির কোর্সটি নির্বাচন করুন:</p>
+                            <div class="job-courses-grid">
+                                <a href="job/real-test.html" class="job-course-btn" style="border-left: 4px solid #28a745; background: linear-gradient(to right, #f4fff7, #ffffff);">
+                                    <span class="icon">🏆</span>
+                                    <span class="title" style="color: #1b5e20;">Real Job Test (মডেল টেস্ট ও পরীক্ষা)</span>
+                                </a>
+                                <a href="job/routine.html" class="job-course-btn" style="border-left: 4px solid var(--accent-color); background: linear-gradient(to right, #fffdf0, #ffffff);">
+                                    <span class="icon">📅</span>
+                                    <span class="title">পড়ার রুটিন (Study Routine)</span>
+                                </a>
+                                <a href="job/bcs.html" class="job-course-btn">
+                                    <span class="icon">🏛️</span>
+                                    <span class="title">বিসিএস (BCS)</span>
+                                </a>
+                                <a href="job/bank.html" class="job-course-btn">
+                                    <span class="icon">🏦</span>
+                                    <span class="title">ব্যাংক (Bank)</span>
+                                </a>
+                                <a href="job/ntrca.html" class="job-course-btn">
+                                    <span class="icon">👨‍🏫</span>
+                                    <span class="title">এনটিআরসিএ (NTRCA)</span>
+                                </a>
+                                <a href="job/primary.html" class="job-course-btn">
+                                    <span class="icon">🏫</span>
+                                    <span class="title">প্রাথমিক শিক্ষক (Primary)</span>
+                                </a>
+                                <a href="job/grade9-20.html" class="job-course-btn">
+                                    <span class="icon">🏢</span>
+                                    <span class="title">৯ম-২০তম গ্রেড</span>
+                                </a>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', async () => {
+                await api('/api/logout', { method: 'POST' });
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+</body>
+</html>

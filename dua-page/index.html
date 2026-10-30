@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইসলামিক দোয়া | শরীফ একাডেমী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Amiri:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --islamic-primary: #0d6b3f;
+            --islamic-dark: #053d23;
+            --islamic-gold: #c5a02e;
+            --islamic-light: #f0f7f3;
+            --islamic-cream: #fdf8e8;
+            --islamic-text: #1a1a1a;
+            --islamic-muted: #6b7a71;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--islamic-light);
+            color: var(--islamic-text);
+            min-height: 100vh;
+        }
+
+        /* Islamic Pattern Header */
+        .islamic-header {
+            background: linear-gradient(135deg, var(--islamic-dark) 0%, var(--islamic-primary) 50%, #0a8649 100%);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .islamic-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(197, 160, 46, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(197, 160, 46, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        /* Geometric Islamic pattern overlay */
+        .islamic-header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 50px 20px 60px;
+        }
+
+        .header-logo {
+            height: 70px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        .header-crescent {
+            font-size: 3rem;
+            color: var(--islamic-gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(197, 160, 46, 0.5);
+        }
+
+        .header-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header-content h1 span {
+            color: var(--islamic-gold);
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .header-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--islamic-gold);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Back Link */
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .back-link:hover {
+            color: var(--islamic-gold);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+            margin: -30px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .coming-soon-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(13, 107, 63, 0.1);
+        }
+
+        .coming-soon-card .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .coming-soon-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--islamic-primary);
+            margin-bottom: 15px;
+        }
+
+        .coming-soon-card p {
+            color: var(--islamic-muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        /* Arabic Dua placeholder */
+        .arabic-placeholder {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--islamic-primary);
+            direction: rtl;
+            text-align: center;
+            padding: 30px;
+            background: var(--islamic-cream);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            line-height: 2;
+            border-left: 4px solid var(--islamic-gold);
+            border-right: 4px solid var(--islamic-gold);
+        }
+
+        .translation {
+            font-size: 1rem;
+            color: var(--islamic-muted);
+            font-style: italic;
+            margin-top: 15px;
+            direction: ltr;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        /* Feature categories */
+        .categories-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .cat-card {
+            background: var(--islamic-light);
+            border: 1px solid rgba(13, 107, 63, 0.1);
+            border-radius: 14px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(13, 107, 63, 0.1);
+            border-color: var(--islamic-gold);
+        }
+
+        .cat-card .cat-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .cat-card h4 {
+            color: var(--islamic-primary);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .cat-card p {
+            font-size: 0.85rem;
+            color: var(--islamic-muted);
+            margin: 0;
+        }
+
+        /* Footer */
+        .islamic-footer {
+            background: var(--islamic-dark);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+        }
+        .islamic-footer a {
+            color: var(--islamic-gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 { font-size: 2rem; }
+            .categories-preview { grid-template-columns: 1fr; }
+            .coming-soon-card { padding: 40px 20px; }
+            .arabic-placeholder { font-size: 1.5rem; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="islamic-header">
+        <a href="http://localhost:3000" class="back-link">← শরীফ একাডেমীতে ফিরে যাও</a>
+        <div class="header-content">
+            <img src="http://localhost:3000/images/logo.jpg" alt="Sharif Academy" class="header-logo">
+            <div class="header-crescent">☪</div>
+            <h1>ইসলামিক <span>দোয়া</span> সংকলন</h1>
+            <div class="header-divider"></div>
+            <p class="header-subtitle">কুরআন ও হাদীস থেকে সংকলিত দৈনন্দিন জীবনের গুরুত্বপূর্ণ দোয়াসমূহ</p>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main-content">
+        <div class="coming-soon-card">
+            <div class="icon">📖</div>
+
+            <div class="arabic-placeholder">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                <div class="translation">পরম করুণাময় অতি দয়ালু আল্লাহর নামে</div>
+            </div>
+
+            <h2>শীঘ্রই আসছে...</h2>
+            <p>ইনশাআল্লাহ খুব শীঘ্রই এখানে কুরআন ও হাদীস থেকে সংকলিত দোয়াসমূহ যুক্ত করা হবে। আমাদের সাথেই থাকুন।</p>
+
+            <!-- Upcoming categories -->
+            <div class="categories-preview">
+                <div class="cat-card">
+                    <div class="cat-icon">🤲</div>
+                    <h4>দৈনন্দিন দোয়া</h4>
+                    <p>ঘুম, খাওয়া, পোশাক ইত্যাদি</p>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-icon">🕋</div>
+                    <h4>নামাজের দোয়া</h4>
+                    <p>সূরা, তাশাহুদ, দরূদ</p>
+                </div>
+                <div class="cat-card">
+                    <div class="cat-icon">📿</div>
+                    <h4>যিকির ও তাসবীহ</h4>
+                    <p>সকাল-সন্ধ্যার আমল</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="islamic-footer">
+        <p>শরীফ একাডেমী — <a href="http://localhost:3000">sharifacademy.com</a> | Learn • Grow • Succeed</p>
+    </footer>
+</body>
+</html>

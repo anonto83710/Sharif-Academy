@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Job Test | শরীফ একাডেমী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/modern.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .test-header {
+            background: linear-gradient(135deg, #0b2545 0%, #134074 100%);
+            padding: 60px 0 40px;
+            color: white;
+            text-align: center;
+        }
+        .test-header h1 { color: #ffd700; font-size: 2.3rem; margin-bottom: 10px; }
+        .test-header p { font-size: 1.1rem; opacity: 0.9; max-width: 650px; margin: 0 auto; }
+        
+        .test-container {
+            max-width: 900px;
+            margin: -25px auto 60px;
+            padding: 0 15px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .exam-card {
+            background: white;
+            border-radius: 14px;
+            padding: 25px 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #c9a227;
+            background: linear-gradient(to right, #fffdf2, #ffffff);
+            transition: all 0.3s;
+        }
+        .exam-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        .exam-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+        }
+        .exam-meta {
+            display: flex;
+            gap: 15px;
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .exam-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .back-link:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+    <nav class="navbar modern-navbar" style="position: relative;">
+        <div class="container flex-between">
+            <div class="logo">
+                <a href="../index.html"><img src="../images/logo.jpg" alt="Sharif Academy Logo" class="nav-logo-img"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">হোম</a></li>
+                <li><a href="../dashboard.html">ড্যাশবোর্ড</a></li>
+                <li><a href="routine.html">জব রুটিন</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="test-header">
+        <div class="container">
+            <h1>🏆 Real Job Test (লাইভ পরীক্ষা)</h1>
+            <p>বিসিএস, ব্যাংক, প্রাথমিক শিক্ষক ও সরকারি চাকরির প্রস্তুতির জন্য রিয়েল টাইম অনলাইন টেস্ট সিস্টেম।</p>
+        </div>
+    </div>
+
+    <div class="container test-container">
+        <a href="../dashboard.html" class="back-link"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে ফিরে যান</a>
+
+        <!-- Exam List Section -->
+        <div id="examListView">
+            <h3 style="margin-bottom: 20px; color: var(--primary-color);">উপলব্ধ পরীক্ষা সমূহ:</h3>
+            <div id="examCardsContainer">
+                <div class="exam-card">
+                    <div class="exam-info">
+                        <span style="background: #c9a227; color: #111; font-weight: 700; font-size: 0.8rem; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 6px;">বিশেষ পরীক্ষা</span>
+                        <h3>🏛️ মুদ্রণ ও প্রকাশনা অধিদপ্তর-30/10/2026</h3>
+                        <p style="color: #555; margin-bottom: 5px;">অফিস সহকারী কাম কম্পিউটার মুদ্রাক্ষরিক — MCQ পরীক্ষা। বিষয়: বাংলা, ইংরেজি, গণিত ও সাধারণ জ্ঞান।</p>
+                        <div class="exam-meta">
+                            <span><i class="fas fa-question-circle"></i> মোট ৮০টি প্রশ্ন</span>
+                            <span><i class="fas fa-stopwatch"></i> ৬০ মিনিট (প্রতি বিষয় ১৫ মিনিট)</span>
+                            <span><i class="fas fa-award"></i> পূর্ণমান: ৮০</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="dgp-exam.html" class="btn btn-primary" style="border-radius: 8px; padding: 12px 24px; font-weight: 700; background: #13224a; color: #fff; text-decoration: none; display: inline-block;">
+                            পরীক্ষা দিন <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

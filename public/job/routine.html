@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জব রুটিন | শরীফ একাডেমী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/modern.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 60px 0 45px;
+            color: white;
+            text-align: center;
+        }
+        .course-header h1 { color: white; font-size: 2.3rem; margin-bottom: 12px; }
+        .course-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        
+        .routine-wrapper {
+            max-width: 950px;
+            margin: -25px auto 50px;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 10;
+        }
+        .routine-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .pdf-frame {
+            width: 100%;
+            height: 800px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .back-btn:hover { color: var(--accent-color); }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-color);
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+            transition: all 0.3s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar modern-navbar" style="position: relative;">
+        <div class="container flex-between">
+            <div class="logo">
+                <a href="../index.html"><img src="../images/logo.jpg" alt="Sharif Academy Logo" class="nav-logo-img"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../dashboard.html">ড্যাশবোর্ড</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="course-header">
+        <div class="container">
+            <h1>📅 চাকরীর প্রস্তুতির পড়ার রুটিন</h1>
+            <p>শরীফ একাডেমী চাকরি প্রত্যাশী সকলের জন্য পড়ার রুটিন।</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="routine-wrapper">
+            <div class="routine-actions">
+                <a href="../dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে ফিরে যান</a>
+                <a href="Routine.pdf" download="Sharif_Academy_Job_Routine.pdf" class="download-btn"><i class="fas fa-download"></i> রুটিন ডাউনলোড করুন</a>
+            </div>
+            <iframe src="Routine.pdf" class="pdf-frame" title="Job Routine PDF">
+                <p>আপনার ব্রাউজারে পিডিএফ সরাসরি দেখা যাচ্ছে না। <a href="Routine.pdf" target="_blank">এখানে ক্লিক করে রুটিন দেখুন</a>।</p>
+            </iframe>
+        </div>
+    </div>
+</body>
+</html>

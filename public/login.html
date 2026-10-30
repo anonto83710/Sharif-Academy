@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লগইন | শরীফ একাডেমী</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="auth-page">
+        <!-- Left Side (Decorative) -->
+        <div class="auth-left">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="auth-left-content text-center">
+                <h1>শরীফ একাডেমী</h1>
+                <p>জ্ঞানের আলোয় উদ্ভাসিত হও, স্বপ্ন ছুঁয়ে যাও আকাশ</p>
+            </div>
+        </div>
+
+        <!-- Right Side (Form) -->
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="text-center" style="margin-bottom: 20px;">
+                    <a href="index.html" style="font-weight: 600;">← ফিরে যান</a>
+                </div>
+                <h2>লগইন করুন</h2>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">নাম অথবা মোবাইল নম্বর</label>
+                        <input type="text" id="identifier" class="form-control" placeholder="তোমার নাম বা ০১XXXXXXXXX" required>
+                        <span class="error-message" id="identifierError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">পাসওয়ার্ড</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" class="form-control" placeholder="পাসওয়ার্ড লিখুন" required>
+                            <span class="password-toggle" onclick="togglePassword('password')">👁️</span>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="text-right" style="text-align: right; margin-bottom: 20px;">
+                        <a href="#" id="forgotBtn" style="font-size: 0.9rem;">পাসওয়ার্ড ভুলে গেছেন?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">লগইন</button>
+                </form>
+                
+                <div class="separator">অথবা</div>
+                
+                <a href="register.html" class="btn btn-outline btn-block">নতুন অ্যাকাউন্ট তৈরি করুন</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotModal">
+        <div class="modal-overlay" onclick="closeModal('forgotModal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('forgotModal')">×</button>
+            <h3>পাসওয়ার্ড উদ্ধার</h3>
+            <p style="margin-bottom: 20px; font-size: 0.9rem;">আপনার মোবাইল নম্বর এবং অভিভাবকের নম্বর প্রদান করুন।</p>
+            
+            <form id="forgotForm">
+                <div class="form-group">
+                    <label class="form-label">মোবাইল নম্বর</label>
+                    <input type="text" id="f_mobile" class="form-control" placeholder="01XXXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">অভিভাবকের মোবাইল নম্বর</label>
+                    <input type="text" id="f_guardian" class="form-control" placeholder="01XXXXXXXXX" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">পাসওয়ার্ড রিসেট করুন</button>
+            </form>
+            <div id="forgotResult" style="margin-top: 15px; display: none;" class="text-center"></div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
